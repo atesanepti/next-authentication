@@ -8,8 +8,8 @@ const page = () => {
         <Input placeholder="Email" type="email" name="email" />
         <br />
         <Input placeholder="Password" type="password" name="password" />
-        <Button >
-            
+        <Button variant="ghost">
+            Login
         </Button>
       </div>
     </div>
