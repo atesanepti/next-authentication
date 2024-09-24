@@ -7,16 +7,19 @@ import axios, { AxiosRequestConfig, AxiosResponse } from "axios";
 import { getValue, setValue } from "@/helpers/localStore";
 import { useToast } from "@/hooks/use-toast";
 import Link from "next/link";
-const Login = () => {
+const Signup = () => {
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
 
   const navigate = useRouter();
   const { toast } = useToast();
 
-  const login = async () => {
+  const signup = async () => {
     if (!password || !username) {
-      return toast({ description: "Credential is required", title: "Login Failed!" });
+      return toast({
+        description: "Credential is required",
+        title: "Login Failed!",
+      });
     }
 
     // create a axio request
@@ -40,17 +43,14 @@ const Login = () => {
 
     try {
       const response: AxiosResponse = await client.post(
-        "/api/login",
+        "/api/user",
         data,
         config
       );
-
-      setValue("user", response.data.payload._id);
-      toast({ description: response.data.message, title: "Login Successfull" });
-      navigate.push("/profile")
+      navigate.push("/login");
     } catch (error) {
-      const errorMessage : string = error.response.data.error;
-      toast({ description: errorMessage, title: "Login Failed!" });
+      const errorMessage: string = error.response.data.error;
+      toast({ description: errorMessage, title: "Register Failed!" });
     }
   };
 
@@ -72,7 +72,7 @@ const Login = () => {
         </Link>
         <div className="my-6">
           <h2 className="text-3xl font-blod text-center text-white">
-            Singin Now!
+            Register Now!
           </h2>
         </div>
         <div>
@@ -91,8 +91,8 @@ const Login = () => {
           />
 
           <div className="flex items-center justify-center">
-            <Button className="px-16 mx-auto mt-6" onClick={login}>
-              Login{" "}
+            <Button className="px-16 mx-auto mt-6" onClick={signup}>
+              Register{" "}
             </Button>
           </div>
         </div>
@@ -101,4 +101,4 @@ const Login = () => {
   );
 };
 
-export default Login;
+export default Signup;

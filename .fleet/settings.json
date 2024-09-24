@@ -1,0 +1,18 @@
+{
+    "plugins": [
+        {
+            "type": "add",
+            "pluginName": "fleet.emmet"
+        },
+        {
+            "type": "add",
+            "pluginName": "fleet.tailwindcss"
+        }
+    ],
+    "autoSave": "OnFocus",
+    "nodejs.typescript.rebuildOnChanges": true,
+    "editor.formatOnSave": true,
+    "prettier.mode": "Enabled",
+    "nodejs.editor.formatOnSave.stylelint.mode": "Disabled",
+    "java.debugger.reloadClassesAfterCompilation": "Ask"
+}
